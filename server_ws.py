@@ -15,6 +15,8 @@ async def broadcast(msg, ws):
     except Exception as e:
         user_websockets.pop(ws)
         print(e)
+    except KeyError as e:
+        print(e)
 
 
 async def echo(websocket):
@@ -24,7 +26,6 @@ async def echo(websocket):
         'nickname': websocket.request.headers.get('X-nickname', '')
     }
     async for message in websocket:
-        print(message)
         await broadcast(message, websocket)
         # await websocket.send(message)
 
