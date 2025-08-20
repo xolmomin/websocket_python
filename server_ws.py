@@ -30,7 +30,7 @@ async def echo(websocket):
 
 
 async def main():
-    host = 'localhost'
+    host = '0'
     port = 8765
     async with serve(echo, host, port) as server:
         print(f"{host}:{port} websocket server is running")
