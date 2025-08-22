@@ -2,25 +2,25 @@ import asyncio
 
 from websockets.asyncio.server import serve
 
-user_websockets = {}
+connection_list = {}
 
 
 async def broadcast(msg, ws):
     try:
-        current_user = user_websockets[ws]
+        current_user = connection_list[ws]
 
-        for user_ws, _ in user_websockets.items():
+        for user_ws, _ in connection_list.items():
             await user_ws.send(
                 f"[{current_user['host']}] |{current_user['user']} - {current_user['nickname']}| - {msg}")
     except Exception as e:
-        user_websockets.pop(ws)
+        connection_list.pop(ws)
         print(e)
     except KeyError as e:
         print(e)
 
 
 async def echo(websocket):
-    user_websockets[websocket] = {
+    connection_list[websocket] = {
         'host': websocket.remote_address[0],
         'user': websocket.request.headers.get('X-user', ''),
         'nickname': websocket.request.headers.get('X-nickname', '')
@@ -40,3 +40,20 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
+"""
+
+
+server
+
+client1
+
+client2
+
+http://olx.uz
+https://olx.uz
+
+ws://localhost:8765
+
+"""

@@ -4,5 +4,6 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.13"
 dependencies = [
+    "orjson>=3.11.2",
     "websockets>=15.0.1",
 ]
