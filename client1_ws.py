@@ -22,7 +22,7 @@ async def main(ws_server_url, x_user):
 
 
 if __name__ == "__main__":
-    host = '10.30.9.26'
+    host = 'localhost'
     x_user = os.getenv('USER')
 
     websocket_server_url = f"ws://{host}:8765"

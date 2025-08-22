@@ -11,7 +11,29 @@ groups = dict()
 # /join 30
 {
     "type": "group",
-    "action": "join",  # leave
+    "action": "join",
+    "to": "30"
+}
+
+# /leave 30
+{
+    "type": "group",
+    "action": "leave",
+    "to": "30"
+}
+
+# hello python @botir
+{
+    "message": "hello python",
+    "type": "private",
+    "to": "botir"
+}
+
+
+# /group salom gruppadagilar @30
+{
+    "message": "salom gruppadagilar",
+    "type": "group",
     "to": "30"
 }
 
